@@ -1,19 +1,7 @@
+const app = require("../src/app")
 let supertest = require("supertest")
-let request = supertest("www.google.com")
+let request = supertest("app")
 
-test('A aplicação deve responder na porta 3131', async () => {
-    // Promise 
-    // return request.get('/').then(res => expect(res.statusCode).toEqual(200))
-
-    // Async Await
-
-    try{
-
-        let res = await request.get('/')
-        expect(res.statusCode).toEqual(200)
-        
-    }catch(err){
-        console.log(err)
-    }
-
+test('A aplicação deve responder na porta 3131', () => {
+    return request.get('/').then(res => expect(res.statusCode).toEqual(200))
 })
